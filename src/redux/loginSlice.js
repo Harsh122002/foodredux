@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// Login User Thunk
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (values, { rejectWithValue }) => {
@@ -32,7 +31,6 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-// Retrieve user from localStorage
 const storedUser = JSON.parse(localStorage.getItem("login"));
 
 export const initialState = {
@@ -42,7 +40,6 @@ export const initialState = {
   error: null,
 };
 
-// Auth Slice
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -51,7 +48,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.user = null;
       state.error = null;
-      localStorage.removeItem("login"); // Clear user data from localStorage
+      localStorage.removeItem("login");
     },
   },
   extraReducers: (builder) => {

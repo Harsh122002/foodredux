@@ -38,7 +38,7 @@ export default function Header() {
           : <Link to="/login" className="p-2 rounded-md">Login</Link>
 
         }
-        <Link to="#" className="p-2 rounded-md relative">
+        <Link to="/cart" className="p-2 rounded-md relative">
           <FiShoppingCart size={24} />
           {totalItems > 0 && (
             <span className="absolute -top-1  -right-1 bg-red-600 p-1 rounded-lg text-xs text-white font-bold">{totalItems}</span>)}
@@ -52,8 +52,7 @@ export default function Header() {
           </button>
           <ul className="mt-4 space-y-4">
             <li><Link to="/" className="text-black">Home</Link></li>
-            <li><Link to="/about" className="text-black">About</Link></li>
-            <li><Link to="/contact" className="text-black">Contact</Link></li>
+          
           </ul>
         </div>
       )}

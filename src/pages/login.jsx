@@ -26,7 +26,6 @@ export default function Login() {
        const res = await dispatch(loginUser(values)); 
    
        if (res.meta?.requestStatus === 'fulfilled') {
-        //  localStorage.setItem("login",JSON.stringify(res.payload))
          navigate('/');
        } else {
          console.error('Login failed:', res.error?.message);

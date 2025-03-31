@@ -39,11 +39,12 @@ const cartSlice = createSlice({
   },
 });
 
-// Selector to get the total number of products
-export const selectTotalItems = (state) => {
-  return state.cart.cart.length;
-};
+export const selectTotalItems = (state) => state.cart.cart.length;
 
-export const { addToCart, removeFromCart, updateQty, clearCart } =
-  cartSlice.actions;
+export const TotalAmount = (state) => {
+  return state.cart.cart.reduce((total, product) => {
+    return total + product.price * product.qty;
+  }, 0);
+}
+export const { addToCart, removeFromCart, updateQty, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

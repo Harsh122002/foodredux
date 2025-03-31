@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Categories, GetProducts } from '../api/api';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/cartSlice';
 import ResponsivePaginationComponent from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,9 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const limit = 8;
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     fetchCategories();
     fetchProducts();
@@ -33,7 +36,6 @@ export default function Home() {
       setProducts(response.data);
       setTotalPages(response.totalPages);
   
-      // Use response.data for reduce instead of response directly
       const initialQuantities = response.data.reduce((acc, product) => {
         acc[product.id] = 0;
         return acc;
@@ -60,10 +62,23 @@ export default function Home() {
   };
 
   const handleAddCart = (product) => {
-    console.log('Added to cart:', product.id, 'Quantity:', quantities[product.id] || 1);
-    dispatch(addToCart({ ...product, qty: quantities[product.id] || 1 }));
-    setQuantities((prev) => ({ ...prev, [product.id]: 0 }));
+    if (!isAuthenticated) {
+      navigate("/login");
+      return;
+    }
+  
+    const quantity = quantities[product.id] || 1;
+  
+    console.log('Added to cart:', product.id, 'Quantity:', quantity);
+  
+    dispatch(addToCart({ ...product, qty: quantity }));
+  
+    setQuantities((prev) => ({
+      ...prev,
+      [product.id]: 0,
+    }));
   };
+  
 console.log("total",currentPage);
 
 
@@ -91,13 +106,13 @@ console.log("total",currentPage);
         {products.map((product) => (
           <div key={product.id} className='border p-4 rounded-lg shadow-md'>
             <img
-              src={`/images/${product.image}`}
+              src={`/public/images/${product.image}`}
               alt={product.name}
               className='w-full h-48 object-cover rounded-lg'
             />
             <h2 className='text-lg font-bold mt-2'>{product.name}</h2>
             <p className='text-gray-600'>{product.category}</p>
-            <p className='text-green-600 font-bold'>Rs.{product.price.toFixed(2)}</p>
+            <p className='text-green-600 font-bold'>Rs.{product.price.toFixed(2)*10}</p>
             <p className='text-gray-500 mt-1'>{product.description}</p>
             <article className='flex flex-row justify-between'>
               <div>
