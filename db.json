@@ -1,0 +1,84 @@
+{
+  "users": [
+    {
+      "id": "a117",
+      "fullName": "harsh",
+      "email": "harshch@123",
+      "password": "123456"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Margherita Pizza",
+      "category": "Pizza",
+      "price": 8.99,
+      "description": "Classic margherita pizza with fresh basil, mozzarella, and tomato sauce.",
+      "image": "margherita_pizza.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Pepperoni Pizza",
+      "category": "Pizza",
+      "price": 10.99,
+      "description": "Delicious pepperoni pizza with mozzarella cheese and marinara sauce.",
+      "image": "pepperoni_pizza.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Veggie Burger",
+      "category": "Burger",
+      "price": 7.49,
+      "description": "Healthy veggie burger with lettuce, tomato, and special sauce.",
+      "image": "veggie_burger.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Classic Caesar Salad",
+      "category": "Salad",
+      "price": 6.99,
+      "description": "Fresh romaine lettuce, parmesan, croutons, and Caesar dressing.",
+      "image": "caesar_salad.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Greek Salad",
+      "category": "Salad",
+      "price": 7.49,
+      "description": "Refreshing salad with cucumbers, olives, feta cheese, and olive oil dressing.",
+      "image": "greek_salad.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Chocolate Cake",
+      "category": "Dessert",
+      "price": 5.99,
+      "description": "Rich and moist chocolate cake with a creamy chocolate ganache.",
+      "image": "chocolate_cake.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Cheesecake",
+      "category": "Dessert",
+      "price": 6.49,
+      "description": "Classic New York-style cheesecake with a graham cracker crust.",
+      "image": "cheesecake.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Mango Smoothie",
+      "category": "Beverage",
+      "price": 4.99,
+      "description": "Refreshing mango smoothie made with fresh mangoes and yogurt.",
+      "image": "mango_smoothie.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Iced Coffee",
+      "category": "Beverage",
+      "price": 3.99,
+      "description": "Chilled iced coffee with milk and a touch of vanilla.",
+      "image": "iced_coffee.jpg"
+    }
+  ]
+}
