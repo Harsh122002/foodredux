@@ -43,7 +43,7 @@ export const selectTotalItems = (state) => state.cart.cart.length;
 
 export const TotalAmount = (state) => {
   return state.cart.cart.reduce((total, product) => {
-    return total + product.price * product.qty;
+    return (total + product.price * product.qty)*10;
   }, 0);
 }
 export const { addToCart, removeFromCart, updateQty, clearCart } = cartSlice.actions;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { TotalAmount, updateQty } from '../redux/cartSlice';
+import { Link } from 'react-router-dom';
 
 export default function Cart() {
      const cart = useSelector((state) => state.cart.cart);
@@ -13,6 +14,7 @@ export default function Cart() {
      return (
           <div className='flex flex-col pt-26'>
                <h1 className='text-center text-2xl font-bold text-orange-600 cursor-pointer'>Cart</h1>
+               <Link to="/" className='text-center hover:underline'>Back</Link>
                {cart.length > 0 && (
                     <p className='text-xl font-bold text-end mr-10'>TotalAmount:Rs.{totalAmount}</p>)}
                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 pt-10'>
@@ -28,7 +30,7 @@ export default function Cart() {
                                    />
                                    <h2 className='text-lg font-bold mt-2'>{product.name}</h2>
                                    <p className='text-gray-600'>{product.category}</p>
-                                   <p className='text-green-600 font-bold'>Rs. {product.price.toFixed(2)}</p>
+                                   <p className='text-green-600 font-bold'>Rs. {product.price.toFixed(2)*10}</p>
                                    <p className='text-gray-500 mt-1'>{product.description}</p>
 
                                    <article className='flex flex-row justify-between mt-4'>
