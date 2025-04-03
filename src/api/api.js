@@ -47,7 +47,17 @@ export const GetProducts = async (category, page, limit ) => {
     throw error;
   }
 };
+export const fetchProducts =async () => {
+  try {
+    const response = await axios.get("http://localhost:3001/products");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
 
+  
+} 
 
 
 export const Categories = async () => {
@@ -60,6 +70,45 @@ export const Categories = async () => {
     return Object.keys(categories); // Return only unique category names
   } catch (error) {
     console.error("Error fetching categories:", error);
+    throw error;
+  }
+};
+
+export const AddFavorites = async (userId, productId) => {
+  const cat = { productId, userId }; // Adding userId to the product
+
+  try {
+    await axios.post(
+      "http://localhost:3001/favorites",
+      cat,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log("Product added to favorites:", productId);
+  } catch (error) {
+    console.error("Error adding product to favorites:", error);
+  }
+};
+
+export const RemoveFavorites = async ( productId) => {
+  try {
+    await axios.delete(`http://localhost:3001/favorites/${productId}`);
+    console.log("Favorite removed successfully");
+  } catch (error) {
+    console.error("Error removing favorite:", error);
+  }
+};
+
+export const GetFavoriteProducts = async (userId) => {
+  try {
+    const response = await axios.get(`http://localhost:3001/favorites`);
+    const favorites = response.data.filter((favorite) => favorite.userId === userId);
+    return favorites;
+  } catch (error) {
+    console.error("Error fetching favorites:", error);
     throw error;
   }
 };

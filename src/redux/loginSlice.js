@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+// User Login
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (values, { rejectWithValue }) => {
@@ -25,6 +26,31 @@ export const loginUser = createAsyncThunk(
 
       localStorage.setItem("login", JSON.stringify(user)); // Store user data in localStorage
       return user;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserProfile = createAsyncThunk(
+  "auth/updateUserProfile",
+  async (updatedUser, { getState, rejectWithValue }) => {
+    try {
+      const { user } = getState().auth; // Get current user
+
+      const response = await fetch(`http://localhost:3001/users/${user.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedUser),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update profile");
+      }
+
+      const newUserData = await response.json();
+      localStorage.setItem("login", JSON.stringify(newUserData)); // Update localStorage
+      return newUserData;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -65,6 +91,17 @@ const authSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.isAuthenticated = false;
+        state.error = action.payload;
+      })
+      .addCase(updateUserProfile.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(updateUserProfile.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.payload;
       });
   },

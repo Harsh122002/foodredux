@@ -11,6 +11,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading, error } = useSelector((state) => state.auth);
+  const mode = useSelector(state => state.mode.mode);
 
   const formik = useFormik({
     initialValues: {
@@ -22,19 +23,19 @@ export default function Login() {
       password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
     }),
     onSubmit: async (values) => {
-     try {
-       const res = await dispatch(loginUser(values)); 
-   
-       if (res.meta?.requestStatus === 'fulfilled') {
-         navigate('/');
-       } else {
-         console.error('Login failed:', res.error?.message);
-       }
-     } catch (error) {
-       console.error('An unexpected error occurred:', error);
-     }
-   },
-   
+      try {
+        const res = await dispatch(loginUser(values));
+
+        if (res.meta?.requestStatus === 'fulfilled') {
+          navigate('/');
+        } else {
+          console.error('Login failed:', res.error?.message);
+        }
+      } catch (error) {
+        console.error('An unexpected error occurred:', error);
+      }
+    },
+
   });
 
   const togglePasswordVisibility = () => {
@@ -42,7 +43,8 @@ export default function Login() {
   };
 
   return (
-    <div className='w-full h-lvh bg-green-400 flex justify-center items-center'>
+    <div className={`w-full h-lvh flex justify-center items-center 
+  ${mode === "dark" ? "bg-black" : "bg-green-400"}`}>
       <div className='w-[26rem] p-4 bg-orange-500/60 rounded-md shadow-lg flex flex-col gap-10'>
         <h1 className='text-3xl font-bold text-center text-white'>Login</h1>
         <form className='flex flex-col gap-4' onSubmit={formik.handleSubmit}>

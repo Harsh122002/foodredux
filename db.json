@@ -4,8 +4,15 @@
       "id": "a117",
       "fullName": "harsh",
       "email": "harshch@123",
-      "password": "123456"
+      "password": "123456",
+      "addresses": [
+        "junagdh",
+        "rajkot"
+      ]
     }
+  ],
+  "favorites": [
+  
   ],
   "products": [
     {

@@ -3,9 +3,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import{Register} from '../api/api'
+import { Register } from '../api/api'
+import { useSelector } from 'react-redux';
 export default function RegisterForm() {
      const [showPassword, setShowPassword] = useState(false);
+     const mode = useSelector(state => state.mode.mode);
 
      const togglePasswordVisibility = () => {
           setShowPassword((prev) => !prev);
@@ -38,7 +40,8 @@ export default function RegisterForm() {
      });
 
      return (
-          <div className='w-full h-lvh bg-green-400 flex justify-center items-center'>
+          <div className={`w-full h-lvh flex justify-center items-center 
+  ${mode === "dark" ? "bg-black" : "bg-green-400"}`}>
                <div className='w-[26rem] p-4 bg-orange-500/60 rounded-md shadow-lg flex flex-col gap-10'>
                     <h1 className='text-3xl font-bold text-center text-white'>Register</h1>
                     <form className='flex flex-col gap-4' onSubmit={formik.handleSubmit}>
