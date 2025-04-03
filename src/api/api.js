@@ -112,3 +112,18 @@ export const GetFavoriteProducts = async (userId) => {
     throw error;
   }
 };
+
+export const OrderPlaces = async (values) => {
+  try {
+    const response = await axios.post("http://localhost:3001/orders", values, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("Order placed successfully:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error placing order:", error);
+    throw error;
+  }
+}

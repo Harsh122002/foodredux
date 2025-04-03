@@ -17,12 +17,16 @@ export default function Profile() {
       fullName: user?.fullName || "",
       email: user?.email || "",
       password: user?.password || "",
+      phone: user?.phone || "",
       addresses: user?.addresses || [""],
     },
     validationSchema: Yup.object({
       fullName: Yup.string().required("Full Name is required"),
       email: Yup.string().email("Invalid email address").required("Email is required"),
       password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+      phone: Yup.string()
+        .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits")
+        .required("Phone number is required"),
       addresses: Yup.array().of(Yup.string().required("Address is required")),
     }),
     onSubmit: (values) => {
@@ -32,7 +36,7 @@ export default function Profile() {
   });
 
   return (
-    <div className={`flex flex-col h-lvh pt-26 ${mode === "dark" && "bg-black"}`}> 
+    <div className={`flex flex-col h-lvh pt-26 ${mode === "dark" && "bg-black"}`}>
       <h1 className='text-center text-2xl font-bold text-orange-600 cursor-pointer'>Profile</h1>
       <form onSubmit={formik.handleSubmit} className={`space-y-4 w-[80%] lg:w-[30%] rounded-md p-6 text-white m-auto ${mode === "dark" ? "bg-gray-500" : "bg-orange-600/80"}`}>
         <div>
@@ -46,6 +50,12 @@ export default function Profile() {
           <input type="email" name="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} className="w-full p-2 border rounded-md" />
           {formik.touched.email && formik.errors.email && <p className="text-red-500 text-sm">{formik.errors.email}</p>}
         </div>
+        <div>
+          <label className="block font-medium">Phone:</label>
+          <input type="phone" name="phone" value={formik.values.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} className="w-full p-2 border rounded-md" />
+          {formik.touched.phone && formik.errors.phone && <p className="text-red-500 text-sm">{formik.errors.phone}</p>}
+        </div>
+
 
         <div>
           <label className="block font-medium">Password:</label>

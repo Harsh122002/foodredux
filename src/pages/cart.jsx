@@ -19,6 +19,7 @@ export default function Cart() {
                <Link to="/" className='text-center text-orange-600 hover:underline'>Back</Link>
                {cart.length > 0 && (
                     <p className='text-xl font-bold text-end mr-10 text-orange-600'>TotalAmount:Rs.{Math.ceil(totalAmount)}</p>)}
+               <Link to="/orderPlace" className='p-2 m-auto bg-blue-600 text-center w-36 text-white cursor-pointer rounded-md hover:bg-blue-800'>Order Place</Link>
                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 pt-10'>
                     {cart.length === 0 ? (
                          <p className='text-center col-span-full'>Your cart is empty.</p>

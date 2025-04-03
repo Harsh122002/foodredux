@@ -1,19 +1,78 @@
 {
   "users": [
     {
-      "id": "a117",
+      "id": "6c63",
       "fullName": "harsh",
       "email": "harshch@123",
       "password": "123456",
+      "phone": "8401247733",
       "addresses": [
         "junagdh",
         "rajkot"
       ]
     }
   ],
-  "favorites": [
-  
+  "orders": [
+    {
+      "id": "c405",
+      "user": {
+        "fullName": "harsh",
+        "email": "harshch@123",
+        "phone": "8401247733",
+        "addresses": [
+          "junagdh",
+          "xvdsv",
+          "asvd",
+          "dasvdsv",
+          "rajkot",
+          "morbi"
+        ]
+      },
+      "selectedAddress": "asvd",
+      "cart": [
+        {
+          "id": "2",
+          "name": "Pepperoni Pizza",
+          "quantity": 1,
+          "price": 110
+        }
+      ],
+      "status": "pending",
+      "totalAmount": 110,
+      "paymentType": "Cash"
+    },
+    {
+      "id": "5c73",
+      "user": {
+        "fullName": "harsh",
+        "email": "harshch@123",
+        "phone": "8401247733",
+        "addresses": [
+          "junagdh",
+          "xvdsv",
+          "asvd",
+          "dasvdsv",
+          "rajkot",
+          "morbi",
+          "gir",
+          "rajkot"
+        ]
+      },
+      "selectedAddress": "junagdh",
+      "cart": [
+        {
+          "id": "2",
+          "name": "Pepperoni Pizza",
+          "quantity": 1,
+          "price": 110
+        }
+      ],
+      "status": "pending",
+      "totalAmount": 110,
+      "paymentType": "Cash"
+    }
   ],
+  "favorites": [],
   "products": [
     {
       "id": "1",
