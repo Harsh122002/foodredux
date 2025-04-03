@@ -5,7 +5,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/loginSlice';
-import { selectTotalItems } from '../redux/cartSlice';
+import { clearCart, selectTotalItems } from '../redux/cartSlice';
 import { CiLight } from 'react-icons/ci';
 import { MdDarkMode } from 'react-icons/md';
 import { toggleMode } from '../redux/lightDark';
@@ -29,6 +29,7 @@ export default function Header() {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
 
     if (confirmLogout) {
+      dispatch(clearCart());
       navigate("/login");
 
       dispatch(logout());
