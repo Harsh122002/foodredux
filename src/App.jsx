@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import Profile from './pages/profile';
 import OrderPlace from './pages/orderPlace';
 import AddressForm from './component/addresses';
+import OrderStatus from './pages/orderStatus';
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -25,6 +26,7 @@ function App() {
         <Route path="/profile" element={isAuthenticated ? <Profile /> : <Navigate to="/login" />} />
         <Route path="/orderPlace" element={isAuthenticated ? <OrderPlace /> : <Navigate to="/login" />} />
         <Route path="/address" element={isAuthenticated ? <AddressForm /> : <Navigate to="/login" />} />
+        <Route path="/orderStatus" element={isAuthenticated ? <OrderStatus /> : <Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   );

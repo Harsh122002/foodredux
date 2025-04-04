@@ -50,10 +50,14 @@ export default function OrderPlace() {
                          name: item.name,
                          quantity: item.qty,
                          price: Math.ceil(item.price * 10),
+                         image: item.image,
+                         category: item.category,
+                    
                     })),
                     status: "pending",
                     totalAmount: Math.ceil(totalAmount),
                     paymentType: values.paymentType,
+                    date:new Date().toISOString(),
                };
                const data = await OrderPlaces(orderDetails)
                dispatch(clearCart());

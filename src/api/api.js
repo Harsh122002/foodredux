@@ -127,3 +127,29 @@ export const OrderPlaces = async (values) => {
     throw error;
   }
 }
+
+export const AllOrderRetrieval = async () => {
+  try {
+    const response = await axios.get("http://localhost:3001/orders");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+export const DeleteOrderAboveId = async (id) => {
+  try {
+    await axios.delete(`http://localhost:3001/orders/${id}`);
+    console.log("Order deleted successfully");
+  } catch (error) {
+    console.error("Error deleting order:", error);
+  }
+}
+export const UpdateOrderStatus = async (id, status) => {
+  try {
+    await axios.patch(`http://localhost:3001/orders/${id}`, { status });
+    console.log("Order status updated successfully");
+  } catch (error) {
+    console.error("Error updating order status:", error);
+  }
+}

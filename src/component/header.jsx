@@ -73,6 +73,8 @@ export default function Header() {
               onClick={() => handleClose()}>Cart</Link></li>
             <li><Link to="/profile" className="text-black hover:text-white hover:scale-110"
               onClick={() => handleClose()}>Profile</Link></li>
+            <li><Link to="/orderStatus" className="text-black hover:text-white hover:scale-110"
+              onClick={() => handleClose()}>Order-Status</Link></li>
           </ul>
         </div>
       )}

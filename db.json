@@ -14,62 +14,31 @@
   ],
   "orders": [
     {
-      "id": "c405",
+      "id": "da0e",
       "user": {
         "fullName": "harsh",
         "email": "harshch@123",
         "phone": "8401247733",
         "addresses": [
           "junagdh",
-          "xvdsv",
-          "asvd",
-          "dasvdsv",
-          "rajkot",
-          "morbi"
-        ]
-      },
-      "selectedAddress": "asvd",
-      "cart": [
-        {
-          "id": "2",
-          "name": "Pepperoni Pizza",
-          "quantity": 1,
-          "price": 110
-        }
-      ],
-      "status": "pending",
-      "totalAmount": 110,
-      "paymentType": "Cash"
-    },
-    {
-      "id": "5c73",
-      "user": {
-        "fullName": "harsh",
-        "email": "harshch@123",
-        "phone": "8401247733",
-        "addresses": [
-          "junagdh",
-          "xvdsv",
-          "asvd",
-          "dasvdsv",
-          "rajkot",
-          "morbi",
-          "gir",
           "rajkot"
         ]
       },
-      "selectedAddress": "junagdh",
+      "selectedAddress": "rajkot",
       "cart": [
         {
-          "id": "2",
-          "name": "Pepperoni Pizza",
+          "id": "1",
+          "name": "Margherita Pizza",
           "quantity": 1,
-          "price": 110
+          "price": 90,
+          "image": "margherita_pizza.jpg",
+          "category": "Pizza"
         }
       ],
       "status": "pending",
-      "totalAmount": 110,
-      "paymentType": "Cash"
+      "totalAmount": 90,
+      "paymentType": "Cash",
+      "date": "2025-04-04T05:53:08.772Z"
     }
   ],
   "favorites": [],
